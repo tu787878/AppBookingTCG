@@ -14,7 +14,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class LoginPage implements OnInit {
   private sub_url = "/wp-json/bookingtcg/v1/mobile/auth";
-  input = { domain: "https://www.newyorknails.eu/", code: "TCG-kor0o4sb" };
+  input = { domain: "", code: "" };
   private loading;
   message;
   message2;
