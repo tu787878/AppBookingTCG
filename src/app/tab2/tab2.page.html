@@ -9,49 +9,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-calendar [(ngModel)]="date"
-              [options]="options"
-              [type]="type"
-              [format]="'YYYY-MM-DD'"
-              (change)="changeDate($event)"
-              >
-              
-</ion-calendar>
-
-  <div *ngIf="data">
-    <div *ngFor="let e of data.detail" class="live-event">
-  
-      <div class="info">
-        <div class="content">
-          <h6>{{e.title}}</h6>
-  
-          <p class="stats">
-            <span><ion-icon name="call-outline"></ion-icon>&nbsp;{{e.phone}}</span>
-          </p>
-  
-          <p class="location"><ion-icon name="bag-outline"></ion-icon>&nbsp;{{e.service_name}}&nbsp;-&nbsp;€{{e.price}}</p>
-  
-          <div class="additional-info">
-            <div class="attendees">
-              <p>Mitarbeiter: {{e.employee_name}}</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="indicator" *ngIf="e.status == 'wait'">
-          <ion-toggle (ionChange)="changeToggle(e)"></ion-toggle>
-          <div>{{e.start}}</div>
-        </div>
-        <div class="indicator fertig" *ngIf="e.status == 'erledigt'">
-          <ion-toggle (ionChange)="changeToggle(e)" checked="true"></ion-toggle>
-          <div>{{e.start}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="!data">
-    <h3 class="no_data">Keine Termine an diesem Tag!</h3>
-    
-  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<full-calendar *ngIf="!load" #calendar [options]="calendarOptions"></full-calendar>
+<ion-progress-bar *ngIf="load" color="secondary" type="indeterminate"></ion-progress-bar>
+ 
 </ion-content>

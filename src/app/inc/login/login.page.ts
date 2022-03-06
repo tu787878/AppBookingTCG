@@ -47,7 +47,7 @@ export class LoginPage implements OnInit {
 // TCG-ko5p4gas	
   addShop(){
     this.presentLoading();
-    let domain = 'http://' + this.input['domain'];
+    let domain = 'https://' + this.input['domain'];
     let url = domain + this.sub_url;
     let code = this.input['code'];
 

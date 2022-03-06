@@ -9,6 +9,16 @@ import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ColorPickerModule } from 'ngx-color-picker';
+
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,7 +28,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     IonicStorageModule.forRoot(),
-    ColorPickerModule
+    ColorPickerModule,
+    FullCalendarModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },HTTP],
   bootstrap: [AppComponent],

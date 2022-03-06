@@ -16,18 +16,30 @@
           <h6>{{data.detail.title}}</h6>
   
           <p class="stats">
-            <span><ion-icon name="call-outline"></ion-icon>&nbsp;{{data.detail.phone}}</span>
+            <span><ion-icon name="call-outline"></ion-icon>&nbsp;+49 {{data.detail.phone}}</span>
           </p>
-  
-          <p class="location"><ion-icon name="bag-outline"></ion-icon>&nbsp;{{data.detail.service_name}}</p>
-          <p class="location"><ion-icon name="bag-outline"></ion-icon>&nbsp;{{data.detail.category_name}}</p>
-          <p class="location"><ion-icon name="bag-outline"></ion-icon>&nbsp;€ {{data.detail.price}}</p>
+          
+          <p class="location"><ion-icon name="timer-outline"></ion-icon>&nbsp;{{data.detail.category_name}}</p>
+          <p class="location"><ion-icon name="albums-outline"></ion-icon>&nbsp;{{data.detail.service_name}}</p>
+          <p class="location">&nbsp;€ {{data.detail.price}}</p>
   
           <div class="additional-info">
+            
             <div class="attendees">
               <p>Mitarbeiter: {{data.detail.employee_name}}</p>
             </div>
+
+            <div class="attendees">
+              <p>Dauer: {{data.detail.duration}} Minute</p>
+            </div>
+
+            <div class="attendees">
+              <p *ngIf="data.detail.status == 'wait'">Status: Warten</p>
+              <p *ngIf="data.detail.status != 'wait'">Status: Erledigt</p>
+            </div>
           </div>
+          <ion-button *ngIf="data.detail.status == 'wait'" (click)="done_appointment()" color="warning">Erledigt</ion-button>
+          <ion-button (click)="delete_appointment()" style="margin-left: 20px;" color="danger">Löschen</ion-button>
         </div>
   
         <div class="indicator" *ngIf="data.detail.status == 'wait'">
@@ -36,7 +48,10 @@
         <div class="indicator fertig" *ngIf="data.detail.status == 'erledigt'">
           <div>{{data.detail.start}}</div>
         </div>
+       
       </div>
+
+     
     </div>
   </div>
 </ion-content>
