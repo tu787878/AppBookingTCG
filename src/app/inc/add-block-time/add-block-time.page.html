@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Zurück'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Block</ion-title>
+    <ion-buttons slot="end">
+      <ion-text (click)="saveTimes()" style="margin-right: 5px;font-size: 20px;color: #050505;">Speichern</ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="data">
+  
+      <ion-item>
+        <ion-label>Titel: </ion-label>
+        <ion-input [(ngModel)]="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mitarbeiter</ion-label>
+        <ion-select [(ngModel)]="resources" placeholder="wählen" multiple="true">
+          <!-- <ion-select-option (ionChange)="allClicked()">select/deselect all</ion-select-option> -->
+          <div *ngFor="let employee of data.employee">
+            <ion-select-option [value]="employee.employee_id">{{employee.name}}</ion-select-option>
+          </div>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Von: </ion-label>
+       <!-- Initial value -->
+      <ion-datetime [(ngModel)]="von" displayFormat="DD/MM/YYYY HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bis: </ion-label>
+       <!-- Initial value -->
+      <ion-datetime [(ngModel)]="bis" displayFormat="DD/MM/YYYY HH:mm"></ion-datetime>
+      </ion-item>
+
+</ion-content>

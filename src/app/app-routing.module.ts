@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'help',
     loadChildren: () => import('./inc/help/help.module').then( m => m.HelpPageModule)
   },
+  {
+    path: 'add-block-time',
+    loadChildren: () => import('./inc/add-block-time/add-block-time.module').then( m => m.AddBlockTimePageModule)
+  },
   
   
 ];

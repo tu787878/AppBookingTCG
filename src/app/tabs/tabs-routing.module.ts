@@ -22,6 +22,10 @@ const routes: Routes = [
             path: 'detail-event',
             loadChildren: () => import('../inc/detail-event/detail-event.module').then( m => m.DetailEventPageModule)
           },
+          {
+            path: 'add-block-time',
+            loadChildren: () => import('../inc/add-block-time/add-block-time.module').then( m => m.AddBlockTimePageModule)
+          },
         ]
       },
       {
