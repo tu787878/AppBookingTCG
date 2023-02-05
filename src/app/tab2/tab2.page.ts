@@ -82,6 +82,7 @@ export class Tab2Page {
         this.http2
           .get(url, {}, {})
           .then((data1) => {
+            this.load = false;
             let dt = data1.data.split('<br />', 1);
             dt = JSON.parse(dt);
             this.events = [];
@@ -99,7 +100,7 @@ export class Tab2Page {
                   this.resources = [];
                   dt2.forEach((element2) => {
                     this.resources.push(element2);
-                    this.load = false;
+                    
                     this.calendarOptions = {
                       locales: allLocales,
                       locale: 'de',

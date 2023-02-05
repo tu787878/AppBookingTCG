@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Zurück'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Benutzerdefinierte Zeiten</ion-title>
+    <ion-buttons slot="end">
+      <ion-text (click)="saveTimes()" style="margin-right: 5px;font-size: 20px;color: #050505;">Speichern</ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="data">
+    <div class="time" *ngFor="let d of data">
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="d.type">
+            <ion-select-option value="single">Date</ion-select-option>
+            <ion-select-option value="multiple">Date range</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label *ngIf="d.type=='multiple'">Von</ion-label>
+          <ion-label *ngIf="d.type=='single'">Am</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="d.start_date" placeholder="Von"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="d.type=='multiple'">
+          <ion-label>Bis</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="d.end_date" placeholder="Bis"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-select [(ngModel)]="d.time_type">
+            <ion-select-option value="time_to_time">Uhrzeit</ion-select-option>
+            <ion-select-option value="full_day">Alltag</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="d.time_type=='time_to_time'">
+          <ion-label>Von</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="d.start_time" placeholder="Von"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="d.time_type=='time_to_time'">
+          <ion-label>Bis</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="d.end_time" placeholder="Bis"></ion-datetime>
+        </ion-item>
+        <ion-item class="sub">
+          <ion-icon class="delete-button" (click)="deletePeriod(d.id)" name="close-circle-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-icon (click)="new_period()"  name="add-circle-outline"></ion-icon>
+  </div>
+</ion-content>

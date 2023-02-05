@@ -27,10 +27,24 @@
       <ion-icon  slot="start" name="alarm-outline"></ion-icon>
       <ion-label>Zeiten</ion-label>
     </ion-item>
+    <ion-item [routerLink]="['custom-time-shop']">
+      <ion-icon  slot="start" name="timer-outline"></ion-icon>
+      <ion-label>Benutzerdefinierte Zeiten</ion-label>
+    </ion-item>
     <ion-item [routerLink]="['payment']">
       <ion-icon  slot="start" name="card-outline"></ion-icon>
       <ion-label>Zahlungsmethod</ion-label>
     </ion-item>
 
   </ion-list>
+
+  <div class="information container">
+    <h4>TCG - Web & Marketing</h4>
+    <p>App version 3.0.0</p>
+    <p (click)="openAppStore()" style="color: blue;">Check Update</p>
+    <p>Hamburger Platz 6, 13086 Berlin</p>
+    <p>Email: contact@tcg-marketing.de</p>
+    <p>Tel.: 03026306913</p>
+    <p>Öffungszeiten: Mo-Fr: 10 Uhr - 17 Uhr</p>
+  </div>
 </ion-content>

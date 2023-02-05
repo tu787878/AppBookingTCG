@@ -141,6 +141,10 @@ const routes: Routes = [
             loadChildren: () => import('../inc/time-shop/time-shop.module').then( m => m.TimeShopPageModule)
           },
           {
+            path: 'custom-time-shop',
+            loadChildren: () => import('../inc/custom-time-shop/custom-time-shop.module').then( m => m.CustomTimeShopPageModule)
+          },
+          {
             path: 'payment',
             loadChildren: () => import('../inc/payment/payment.module').then( m => m.PaymentPageModule)
           },
